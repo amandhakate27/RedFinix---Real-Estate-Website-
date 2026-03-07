@@ -1,6 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "tailwindcss";
+@source "../js/**/*.js";
 
 @theme {
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+.nav-link {
+  display: inline-block;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.nav-link:hover {
+  color: #dc2626;
+  transform: scale(1.1);
+}
+
+.card-hover {
+  transition: transform 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
 }
