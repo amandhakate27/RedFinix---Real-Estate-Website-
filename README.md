@@ -2,6 +2,8 @@
 
 A modern real estate web application for browsing luxury property listings, viewing detailed property info, and scheduling viewings — built with HTML, Tailwind CSS v4, and vanilla JavaScript.
 
+🔗 **Live Demo:** [https://redfinix-realestate.netlify.app](https://redfinix-realestate.netlify.app/)
+
 ## Features
 
 - Browse luxury property listings
