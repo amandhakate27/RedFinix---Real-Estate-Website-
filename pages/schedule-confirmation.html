@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+    <link rel="stylesheet" href="../assets/style.css">
+    <title>Schedule Confirmation | RedFinix</title>
+</head>
+
+<body data-base=".." class="bg-zinc-100 font-sans text-zinc-900">
+    <div id="navbar"></div>
+
+    <main class="mx-auto max-w-[1120px] px-4 py-8 sm:px-6 md:py-10">
+        <section class="flex flex-col items-center gap-3 text-center">
+            <img src="../assets/icons/sc-success.svg" alt="Scheduled" class="h-14 w-14 sm:h-16 sm:w-16" />
+            <h1 class="text-2xl font-bold sm:text-3xl">Viewing Scheduled!</h1>
+            <p class="text-sm text-zinc-600 sm:text-base">Your appointment has been confirmed</p>
+        </section>
+
+        <section
+            class="card-hover mt-7 overflow-hidden rounded-2xl border border-zinc-300 bg-zinc-200 shadow-[0_4px_14px_rgba(0,0,0,0.08)]">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-300 px-5 py-5 sm:px-8">
+                <div>
+                    <p class="text-sm text-red-600 sm:text-base">Confirmation Number</p>
+                    <p class="mt-1 text-xl font-bold text-red-600 sm:text-2xl">RDF-PMYR98IWU</p>
+                </div>
+                <img src="../assets/icons/sc-confirmation.svg" alt="Confirmation" class="h-10 w-9" />
+            </div>
+
+            <div class="space-y-0">
+                <div class="border-b border-zinc-300 px-5 py-6 sm:px-8">
+                    <h2 class="text-xl font-semibold sm:text-2xl">Appointment Details</h2>
+
+                    <div class="mt-5 flex items-start gap-3">
+                        <img src="../assets/icons/sc-property.svg" alt="Property" class="mt-1 h-5 w-5" />
+                        <div>
+                            <p class="text-sm text-red-600 sm:text-base">Property</p>
+                            <p class="text-base font-semibold sm:text-lg">Modern Luxury Villa</p>
+                            <p class="mt-1 inline-flex items-center gap-2 text-sm text-zinc-700 sm:text-base">
+                                <img src="../assets/icons/sc-location.svg" alt="Location" class="h-5 w-4" />
+                                Beverly Hills, CA
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid border-b border-zinc-300 px-5 py-6 sm:px-8 md:grid-cols-2 md:gap-10">
+                    <div class="flex items-start gap-3">
+                        <img src="../assets/icons/sc-date.svg" alt="Date" class="mt-1 h-5 w-5" />
+                        <div>
+                            <p class="text-sm text-red-600 sm:text-base">Date &amp; Day</p>
+                            <p class="text-base font-semibold sm:text-lg">Monday, March 9, 2026</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-5 flex items-start gap-3 md:mt-0">
+                        <img src="../assets/icons/sc-time.svg" alt="Time" class="mt-1 h-5 w-5" />
+                        <div>
+                            <p class="text-sm text-red-600 sm:text-base">Time</p>
+                            <p class="text-base font-semibold sm:text-lg">9:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-5 py-6 sm:px-8">
+                    <div class="flex items-start gap-3">
+                        <img src="../assets/icons/sc-agent.svg" alt="Agent" class="mt-1 h-5 w-5" />
+                        <div>
+                            <p class="text-sm text-red-600 sm:text-base">Your Agent</p>
+                            <p class="text-base font-semibold sm:text-lg">Sarash Johnson</p>
+                            <div
+                                class="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-zinc-700 sm:text-base">
+                                <span class="inline-flex items-center gap-2"><img src="../assets/icons/sc-phone.svg"
+                                        alt="Phone" class="h-4.5 w-4.5" />+91 9876365357</span>
+                                <span class="inline-flex items-center gap-2"><img src="../assets/icons/sc-email.svg"
+                                        alt="Email" class="h-4.5 w-5" />sarashjohnson@realestse.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                        <button type="button"
+                            class="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-red-300 text-red-500 transition hover:bg-red-50">
+                            <img src="../assets/icons/sc-download.svg" alt="Download" class="h-4 w-5" />
+                            Download to Calender
+                        </button>
+                        <button type="button"
+                            class="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-red-300 text-red-500 transition hover:bg-red-50">
+                            <img src="../assets/icons/sc-share.svg" alt="Share" class="h-5 w-4.5" />
+                            Share Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="card-hover mt-8 rounded-2xl border border-zinc-300 bg-zinc-200 p-6 shadow-[0_4px_14px_rgba(0,0,0,0.08)] sm:p-8">
+            <h2 class="text-xl font-semibold sm:text-2xl">What to Expect</h2>
+            <div class="mt-5 grid gap-5 sm:grid-cols-2">
+                <article class="flex items-start gap-3">
+                    <span
+                        class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-xl font-bold text-white">1</span>
+                    <div>
+                        <h3 class="text-base font-semibold sm:text-lg">Arrive 5-10 Minutes Early</h3>
+                        <p class="mt-1 text-xs text-zinc-600 sm:text-sm">This gives you time to park and meet your agent
+                            comfortably.</p>
+                    </div>
+                </article>
+                <article class="flex items-start gap-3">
+                    <span
+                        class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-xl font-bold text-white">2</span>
+                    <div>
+                        <h3 class="text-base font-semibold sm:text-lg">Comprehensive Property Tour</h3>
+                        <p class="mt-1 text-xs text-zinc-600 sm:text-sm">Your agent will show you every detail of the
+                            property.</p>
+                    </div>
+                </article>
+                <article class="flex items-start gap-3">
+                    <span
+                        class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-xl font-bold text-white">3</span>
+                    <div>
+                        <h3 class="text-base font-semibold sm:text-lg">Ask Questions</h3>
+                        <p class="mt-1 text-xs text-zinc-600 sm:text-sm">Feel free to ask about features, neighborhood,
+                            and pricing.</p>
+                    </div>
+                </article>
+                <article class="flex items-start gap-3">
+                    <span
+                        class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-600 text-xl font-bold text-white">4</span>
+                    <div>
+                        <h3 class="text-base font-semibold sm:text-lg">Next Steps Discussion</h3>
+                        <p class="mt-1 text-xs text-zinc-600 sm:text-sm">We'll discuss your thoughts and potential next
+                            steps.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="mt-8 rounded-2xl border border-blue-500 bg-blue-50 p-6 sm:p-8">
+            <h2 class="text-xl font-semibold text-blue-700 sm:text-2xl">Important Information</h2>
+            <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-blue-700 sm:text-base">
+                <li>A confirmation email has been sent to your registered email address</li>
+                <li>If you need to reschedule, please contact us at least 24 hours in advance</li>
+                <li>Please bring a valid ID for security purposes</li>
+                <li>Feel free to take photos during the viewing</li>
+            </ul>
+        </section>
+
+        <section class="mt-8 grid gap-3 sm:grid-cols-3">
+            <a href="./properties.html"
+                class="inline-flex h-11 items-center justify-center rounded-full border border-red-300 text-red-400 transition hover:bg-red-50">View
+                More Properties</a>
+            <a href="./contact.html"
+                class="inline-flex h-11 items-center justify-center rounded-full border border-red-300 text-red-400 transition hover:bg-red-50">Contact
+                Support</a>
+            <a href="../index.html"
+                class="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-red-600 text-white transition hover:bg-red-700">Back
+                to Home <span>&#8594;</span></a>
+        </section>
+
+        <section class="mt-14 text-center">
+            <h2 class="text-3xl font-bold sm:text-4xl">Need Help?</h2>
+            <p class="mt-3 text-base text-zinc-600 sm:text-lg">Our team is here to assist you with any questions about
+                your appointment</p>
+            <div class="mt-4 flex flex-wrap items-center justify-center gap-6 text-base text-zinc-700 sm:text-lg">
+                <span class="inline-flex items-center gap-2"><img src="../assets/icons/contact-phone.svg" alt=""
+                        class="h-5 w-5" />+91 8765435629</span>
+                <span class="inline-flex items-center gap-2"><img src="../assets/icons/contact-email.svg" alt=""
+                        class="h-5 w-5" />hello@redfinix.com</span>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

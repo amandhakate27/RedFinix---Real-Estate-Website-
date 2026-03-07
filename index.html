@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>RedFinix</title>
+</head>
+
+<body data-base="." class="bg-white font-sans text-zinc-900">
+    <div id="navbar"></div>
+
+    <main>
+        <section class="relative min-h-[calc(100vh-72px)] overflow-hidden md:min-h-[calc(100vh-80px)]"
+            aria-label="Featured property">
+            <img src="./assets/images/hero-villa.png" alt="Modern luxury villa"
+                class="absolute inset-0 h-full w-full object-cover object-center opacity-85" />
+            <div
+                class="absolute inset-0 bg-[linear-gradient(105deg,rgba(0,0,0,0.72)_15%,rgba(0,0,0,0.44)_40%,rgba(0,0,0,0.18)_66%)]">
+            </div>
+
+            <div
+                class="relative z-10 flex min-h-[calc(100vh-72px)] items-center justify-center px-6 sm:px-10 lg:px-16 md:min-h-[calc(100vh-80px)]">
+                <div class="w-full max-w-5xl text-center text-white">
+                    <h1 class="mb-4 text-5xl leading-[0.96] font-black sm:text-6xl lg:text-7xl xl:text-8xl">Modern
+                        Luxury Villa</h1>
+                    <p class="mx-auto mb-7 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg lg:text-xl">
+                        Experience unparalleled luxury in this stunning 5-bedroom contemporary
+                        masterpiece. Featuring panoramic views, infinity pool, and state-of-the-art
+                        smart home technology.
+                    </p>
+                    <div class="mb-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                        <span class="text-2xl font-bold sm:text-3xl lg:text-4xl">&#8377; 4,500,000</span>
+                        <span class="text-xl font-semibold sm:text-2xl lg:text-3xl">| Beverly Hills, CA</span>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-center gap-4">
+                        <a class="inline-flex h-11 min-w-[168px] items-center justify-center rounded-full bg-red-600 px-7 text-base font-semibold text-white transition hover:bg-red-700 sm:h-12 sm:min-w-[186px]"
+                            href="./pages/schedule.html">
+                            Schedule
+                        </a>
+                        <a class="inline-flex h-11 min-w-[168px] items-center justify-center rounded-full border border-white bg-transparent px-7 text-base font-semibold text-white transition hover:bg-white/10 sm:h-12 sm:min-w-[186px]"
+                            href="./pages/show-property.html">
+                            More info
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-3" aria-hidden="true">
+                <span class="h-2 w-12 rounded-full bg-white"></span>
+                <span class="h-2 w-12 rounded-full bg-white/40"></span>
+                <span class="h-2 w-12 rounded-full bg-white/40"></span>
+            </div>
+        </section>
+
+        <section id="home-property-sections" class="mx-auto max-w-6xl space-y-14 px-6 py-14"></section>
+    </main>
+
+    <div id="footer"></div>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
