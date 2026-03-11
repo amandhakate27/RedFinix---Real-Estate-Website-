@@ -372,12 +372,12 @@ function browseCategoryCardTemplate(card) {
     const iconSrc = routeWithBase(card.icon);
 
     return `
-        <article class="group rounded-2xl border border-zinc-300 bg-white px-4 py-6 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md sm:px-5 sm:py-7">
+        <article class="group rounded-2xl border border-zinc-300 bg-white px-1.5 py-4 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md sm:px-2 sm:py-5">
             <div class="mx-auto mb-3 inline-flex items-center justify-center">
                 <img src="${iconSrc}" alt="" class="h-8 w-8 shrink-0" />
             </div>
-            <h3 class="text-xl font-bold text-zinc-900 sm:text-2xl">${card.label}</h3>
-            <p class="mt-1 text-base text-zinc-500 sm:text-lg">${card.count}</p>
+            <h3 class="text-base font-bold text-zinc-900 sm:text-lg">${card.label}</h3>
+            <p class="mt-1 text-xs text-zinc-500 sm:text-sm">${card.count}</p>
         </article>
     `;
 }
@@ -393,7 +393,7 @@ function browseCategorySectionTemplate(section) {
                 </h2>
                 <p class="mt-2 text-lg text-zinc-500">${section.subtitle}</p>
             </div>
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
+            <div class="grid grid-cols-3 gap-4 sm:grid-cols-6">
                 ${cards}
             </div>
         </section>
@@ -404,13 +404,13 @@ function whyChooseCardTemplate(card) {
     const iconSrc = routeWithBase(card.icon);
 
     return `
-        <article class="group rounded-2xl border border-zinc-300 bg-white p-5 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md sm:p-6">
-            <div class="mx-auto mb-4 inline-flex items-center justify-center">
-                <img src="${iconSrc}" alt="" class="h-9 w-9 shrink-0" />
+        <article class="group rounded-2xl border border-zinc-300 bg-white p-4 text-center shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:shadow-md sm:p-5">
+            <div class="mx-auto mb-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-red-600 transition-colors">
+                <img src="${iconSrc}" alt="" class="h-6 w-6 shrink-0 brightness-0 invert" />
             </div>
-            <p class="text-2xl font-bold tracking-tight text-red-600 sm:text-3xl">${card.value}</p>
-            <h3 class="mt-3 text-xl font-semibold text-zinc-900 sm:text-2xl">${card.title}</h3>
-            <p class="mt-2 text-sm text-zinc-500 sm:text-base">${card.subtitle}</p>
+            <p class="text-xl font-bold tracking-tight text-red-600 sm:text-2xl">${card.value}</p>
+            <h3 class="mt-2 text-base font-semibold text-zinc-900 sm:text-lg">${card.title}</h3>
+            <p class="mt-1 text-xs text-zinc-500 sm:text-sm">${card.subtitle}</p>
         </article>
     `;
 }
@@ -426,7 +426,7 @@ function whyChooseSectionTemplate(section) {
                 </h2>
                 <p class="mt-2 text-lg text-zinc-500">${section.subtitle}</p>
             </div>
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 2xl:grid-cols-4">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 ${cards}
             </div>
         </section>

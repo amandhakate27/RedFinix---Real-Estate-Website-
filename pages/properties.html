@@ -1,33 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
     <link rel="stylesheet" href="../assets/style.css">
     <title>Properties | RedFinix</title>
-    <style>
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+
 </head>
 
 <body data-base=".." class="bg-white font-sans text-zinc-900">
 
     <div id="navbar"></div>
 
-    <main class="mx-auto max-w-7xl px-6 pt-14 pb-14">
+    <main class="mx-auto max-w-7xl px-6 pt-10 pb-14">
 
-        <section class="text-center mb-8 mt-6">
+        <section class="text-center mb-6 mt-4">
             <h1 class="text-3xl sm:text-4xl font-bold">Discover Your Dream Property</h1>
             <p class="text-zinc-500 mt-2">Browse our exclusive collection of luxury properties tailored to your
                 lifestyle</p>
         </section>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const sectionIds = ['villa', 'penthouse', 'apartment', 'house'];
+                const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+                const navbarHeight = 80;
+
+                // Show all sections initially
+                sections.forEach(sec => sec.style.display = '');
+
+                document.addEventListener('click', function (e) {
+                    const btn = e.target.closest('a[href^="#"], a[href="#"]');
+                    if (!btn) return;
+
+                    const href = btn.getAttribute('href');
+                    const targetId = href === '#' ? null : href.replace('#', '');
+                    const target = targetId ? document.getElementById(targetId) : null;
+
+                    e.preventDefault();
+
+                    if (!target) {
+                        // "All" button — show everything, scroll to top of first section
+                        sections.forEach(sec => sec.style.display = '');
+                        const first = sections[0];
+                        if (first) {
+                            setTimeout(() => {
+                                const top = first.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+                                window.scrollTo({ top: top, behavior: 'smooth' });
+                            }, 10);
+                        }
+                        return;
+                    }
+
+                    if (!sections.includes(target)) return; // not a property section link
+
+                    // Hide all, show only target
+                    sections.forEach(sec => sec.style.display = 'none');
+                    target.style.display = '';
+
+                    // Double RAF to ensure display:'' has taken effect before measuring
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+                            window.scrollTo({ top: top, behavior: 'smooth' });
+                        });
+                    });
+                });
+            });
+        </script>
 
         <div class="mt-6 mb-12 flex flex-wrap justify-center gap-3">
-            <a href="#" class="rounded-full bg-red-600 px-6 py-2 text-sm font-medium text-white sm:min-w-[120px]">
+            <a href="#"
+                class="inline-flex items-center justify-center rounded-full bg-red-600 px-6 py-2 text-sm font-medium text-white sm:min-w-[120px]">
                 All
             </a>
             <a href="#villa"
@@ -50,10 +96,10 @@
 
 
         <!-- Villa -->
-        <section id="villa" class="mt-10 mb-8 pb-2">
+        <section id="villa" class="mt-4 mb-8 pb-2">
             <div class="flex items-center gap-3 mb-6">
-                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-zinc-200">
-                    <img src="../assets/icons/vector6.svg" alt="" class="h-6 w-6" />
+                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-red-600">
+                    <img src="../assets/icons/vector6-white.svg" alt="" class="h-6 w-6" />
                 </div>
                 <div>
                     <h2 class="text-2xl font-semibold">Villa</h2>
@@ -153,10 +199,10 @@
         </section>
 
         <!-- Penthouse -->
-        <section id="penthouse" class="mt-8 mb-8 pb-2">
+        <section id="penthouse" class="mt-4 mb-8 pb-2">
             <div class="flex items-center gap-3 mb-6">
-                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-zinc-200">
-                    <img src="../assets/icons/vector5.svg" alt="" class="h-6 w-6" />
+                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-red-600">
+                    <img src="../assets/icons/vector5-white.svg" alt="" class="h-6 w-6" />
                 </div>
                 <div>
                     <h2 class="text-2xl font-semibold">Penthouse</h2>
@@ -256,10 +302,10 @@
         </section>
 
         <!-- Apartment -->
-        <section id="apartment" class="mt-8 mb-8 pb-2">
+        <section id="apartment" class="mt-4 mb-8 pb-2">
             <div class="flex items-center gap-3 mb-6">
-                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-zinc-200">
-                    <img src="../assets/icons/vector4.svg" alt="" class="h-6 w-6" />
+                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-red-600">
+                    <img src="../assets/icons/vector4-white.svg" alt="" class="h-6 w-6" />
                 </div>
                 <div>
                     <h2 class="text-2xl font-semibold">Apartment</h2>
@@ -346,13 +392,13 @@
             </div>
         </section>
 
-        <div class="h-5 md:h-7"></div>
+        <div class="h-5 md:h-7 hidden"></div>
 
         <!-- House -->
-        <section id="house" class="mt-0 mb-8 pb-2">
+        <section id="house" class="mt-4 mb-8 pb-2">
             <div class="flex items-center gap-3 mb-6">
-                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-zinc-200">
-                    <img src="../assets/icons/vector3.svg" alt="" class="h-6 w-6" />
+                <div class="flex items-center justify-center w-11 h-11 rounded-xl bg-red-600">
+                    <img src="../assets/icons/vector3-white.svg" alt="" class="h-6 w-6" />
                 </div>
                 <div>
                     <h2 class="text-2xl font-semibold">House</h2>

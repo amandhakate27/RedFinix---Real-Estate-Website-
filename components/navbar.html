@@ -1,8 +1,8 @@
 <header
   class="sticky top-0 z-50 w-full border-b border-zinc-300/80 bg-white/85 backdrop-blur-md supports-[backdrop-filter]:bg-white/75">
   <nav class="relative flex min-h-[74px] w-full items-stretch md:min-h-[80px]">
-    <a class="flex basis-[132px] items-center justify-center border-r border-zinc-300 px-2 py-2 sm:basis-[148px] md:basis-[166px]"
-      href="#" data-route="home" aria-label="RedFinix home">
+    <a class="flex basis-[132px] items-center justify-center px-2 py-2 sm:basis-[148px] md:basis-[166px]" href="#"
+      data-route="home" aria-label="RedFinix home">
       <img data-asset="assets/images/logo.png" src="./assets/images/logo.png" alt="RedFinix Logo"
         class="w-full max-w-[104px] object-contain sm:max-w-[116px] md:max-w-[132px]" />
     </a>
@@ -20,13 +20,11 @@
       id="rf-nav-menu" data-nav>
       <ul
         class="flex flex-col items-center gap-3 text-center text-[1.02rem] font-medium text-zinc-900 lg:mx-auto lg:flex-row lg:items-center lg:justify-center lg:gap-7 lg:text-[1rem] xl:gap-9 xl:text-[1.05rem] lg:flex-1">
-        <li><a class="nav-link" href="#" data-route="home">Home</a>
-        </li>
-        <li><a class="nav-link" href="#" data-route="about">About</a>
-        </li>
-        <li><a class="nav-link" href="#" data-route="contact">Contact</a></li>
+        <li><a class="nav-link" href="#" data-route="home">Home</a></li>
         <li><a class="nav-link" href="#" data-route="properties">Properties</a></li>
         <li><a class="nav-link" href="#" data-route="schedule">Schedule</a></li>
+        <li><a class="nav-link" href="#" data-route="about">About</a></li>
+        <li><a class="nav-link" href="#" data-route="contact">Contact</a></li>
       </ul>
 
       <div
@@ -42,15 +40,10 @@
           </svg>
         </label>
 
-        <img data-asset="assets/icons/nav-user.svg" src="./assets/icons/nav-user.svg" alt="User"
-          class="hidden h-5 w-5 lg:block" />
-
         <div
-          class="flex min-w-27.5 flex-col items-center gap-1 lg:flex-col lg:items-start lg:gap-0 lg:border-l lg:border-zinc-500 lg:pl-4 lg:leading-tight">
-          <a class="whitespace-nowrap text-[0.95rem] font-medium text-zinc-800 transition hover:text-red-500" href="#"
-            data-route="register">Sign&nbsp;Up</a>
-          <a class="whitespace-nowrap text-[0.95rem] font-medium text-zinc-800 transition hover:text-red-500" href="#"
-            data-route="login">Login</a>
+          class="flex min-w-27.5 flex-col items-center gap-1 lg:flex-col lg:items-start lg:gap-0 lg:pl-4 lg:leading-tight">
+          <a class="inline-flex h-9 min-w-[90px] items-center justify-center rounded-full bg-red-600 px-5 text-sm font-semibold text-white transition-all duration-150 hover:bg-red-700 active:scale-95"
+            href="#" data-route="login">Login</a>
         </div>
       </div>
     </div>
