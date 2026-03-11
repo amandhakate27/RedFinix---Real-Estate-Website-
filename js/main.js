@@ -71,6 +71,34 @@ const TOP_LUXURY_ESTATE_CARDS = [
     { image: "assets/images/ee-120.png" }
 ];
 
+const VILLA_CARDS = [
+    { title: "Gera Isle Royale", location: "Bavdhan", beds: "6 Beds", baths: "7 Baths", area: "7,800 sqft", image: "assets/images/villa-3-10.png" },
+    { title: "Amanora Sweet Water Villas", location: "Hadapsar", beds: "2 Beds", baths: "2 Baths", area: "1,800 sqft", image: "assets/images/viila-2-10.png" },
+    { title: "Lodha Belmondo Villas", location: "Gahunje", beds: "3 Beds", baths: "2 Baths", area: "2,200 sqft", image: "assets/images/villa-4-10.png" },
+    { title: "VTP Velvet Villa", location: "Somatane", beds: "4 Beds", baths: "4 Baths", area: "4,200 sqft", image: "assets/images/villa-50.png" }
+];
+
+const PENTHOUSE_CARDS = [
+    { title: "Trump Towers", location: "Kalyani Nagar", beds: "4 Beds", baths: "5 Baths", area: "5,500 sqft", image: "assets/images/penthouse-1-10.png" },
+    { title: "Skyline Penthouse", location: "Kharadi", beds: "3 Beds", baths: "3 Baths", area: "4,800 sqft", image: "assets/images/penthouse-2-10.png" },
+    { title: "Panchshil Towers", location: "Baner / Balewadi", beds: "3 Beds", baths: "4 Baths", area: "5,200 sqft", image: "assets/images/penthouse-3-10.png" },
+    { title: "Marvel Elan", location: "Boat Club Road", beds: "4 Beds", baths: "5 Baths", area: "4,200 sqft", image: "assets/images/penthouse-4-10.png" }
+];
+
+const APARTMENT_CARDS = [
+    { title: "Kolte Patil 24K Altura", location: "Baner", beds: "3 Beds", baths: "3 Baths", area: "5,500 sqft", image: "assets/images/a-5-10.png" },
+    { title: "The Ark Voyage", location: "NIBM Road", beds: "5 Beds", baths: "5 Baths", area: "4,500 sqft", image: "assets/images/a-6-10.png" },
+    { title: "Lodha Panache", location: "Hinjewadi", beds: "2 Beds", baths: "2 Baths", area: "4,000 sqft", image: "assets/images/a-7-10.png" },
+    { title: "Amanora Gateway Towers", location: "Hadapsar", beds: "4 Beds", baths: "4 Baths", area: "3,500 sqft", image: "assets/images/a-8-10.png" }
+];
+
+const HOUSE_CARDS = [
+    { title: "Gera Isle Royale", location: "Bavdhan", beds: "4 Beds", baths: "4 Baths", area: "6,500 sqft", image: "assets/images/h-1-10.png" },
+    { title: "Supreme Villagio", location: "Somatane", beds: "4 Beds", baths: "4 Baths", area: "2,175 sqft", image: "assets/images/h-2-10.png" },
+    { title: "Pharande Vaarivana", location: "Urse", beds: "3 Beds", baths: "3 Baths", area: "1,735 sqft", image: "assets/images/h-4-10.png" },
+    { title: "Amanora Sweet", location: "Hadapsar", beds: "5 Beds", baths: "5 Baths", area: "9,894 sqft", image: "assets/images/h-9-10.png" }
+];
+
 const EXCLUSIVE_SPOTLIGHT_CARDS = [
     {
         title: "Serene Villa in Lonavala",
@@ -319,6 +347,11 @@ function buildPropertyDetailHref(card, overrides = {}) {
     return `${routeWithBase(ROUTES.propertyDetail)}?${params.toString()}`;
 }
 
+function buildScheduleHref(card) {
+    const params = new URLSearchParams(getPropertyDetailPayload(card));
+    return `${routeWithBase(ROUTES.schedule)}?${params.toString()}`;
+}
+
 function detailPropertyCardTemplate(card, layout) {
     const imageSrc = routeWithBase(card.image);
     const bedIcon = routeWithBase("assets/icons/bed.svg");
@@ -350,9 +383,11 @@ function detailPropertyCardTemplate(card, layout) {
         <article data-slider-item class="group min-w-0 shrink-0 basis-[84%] transition-transform duration-300 hover:-translate-y-1 sm:basis-[48%] lg:basis-[32%] xl:basis-[24%]">
             <div class="block">
                 <div class="relative overflow-hidden rounded-2xl ring-1 ring-zinc-200 shadow-sm transition-shadow duration-300 group-hover:shadow-lg">
-                    <img src="${imageSrc}" alt="${card.title}" class="h-44 w-full object-cover opacity-85 transition duration-500 group-hover:scale-105" />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent"></div>
-                    <div class="absolute inset-x-0 bottom-0 p-3">
+                    <img src="${imageSrc}" alt="${card.title}" class="h-44 w-full object-cover transition duration-500 group-hover:scale-105" />
+                    <div class="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:via-black/60 group-hover:from-black/75"></div>
+                    
+                    <!-- Details (Hidden on Hover) -->
+                    <div class="absolute inset-x-0 bottom-0 p-3 transition-opacity duration-300 group-hover:opacity-0">
                         <h3 class="text-sm font-semibold text-white">${card.title}</h3>
                         <p class="text-xs text-zinc-200">${card.location}</p>
                         <div class="mt-2 flex flex-wrap items-center gap-3 text-[11px] text-zinc-100">
@@ -360,6 +395,16 @@ function detailPropertyCardTemplate(card, layout) {
                             <span class="inline-flex items-center gap-1"><img src="${bathIcon}" alt="" class="h-4 w-4 shrink-0 brightness-0 invert" />${card.baths}</span>
                             <span class="inline-flex items-center gap-1"><img src="${areaIcon}" alt="" class="h-4 w-4 shrink-0 brightness-0 invert" />${card.area}</span>
                         </div>
+                    </div>
+
+                    <!-- Action Buttons (Shown on Hover) -->
+                    <div class="absolute inset-0 flex flex-row items-end justify-center gap-3 pb-6 px-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black/40">
+                        <a href="${buildPropertyDetailHref(card)}" class="inline-flex h-9 w-24 items-center justify-center rounded-full bg-red-600 text-[13px] font-bold text-white transition hover:bg-red-700">
+                            View
+                        </a>
+                        <a href="${buildScheduleHref(card)}" class="inline-flex h-9 w-24 items-center justify-center rounded-full bg-white/10 text-[13px] font-bold text-white backdrop-blur-md ring-1 ring-white/30 transition hover:bg-white/20">
+                            Schedule
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1042,11 +1087,58 @@ function initPropertyDetailPage() {
     initPropertyDetailSlider(payload.image);
 }
 
+function initSchedulePage() {
+    const scheduleRoot = document.getElementById("schedule-title");
+    if (!scheduleRoot) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const payload = getPropertyDetailPayload({
+        title: params.get("title"),
+        location: params.get("location"),
+        price: params.get("price"),
+        image: params.get("image")
+    });
+
+    const titleEl = document.getElementById("schedule-title");
+    const locEl = document.getElementById("schedule-location");
+    const priceEl = document.getElementById("schedule-price");
+    const imgEl = document.getElementById("schedule-img");
+
+    if (titleEl) titleEl.textContent = payload.title;
+    if (locEl) locEl.textContent = payload.location;
+    if (priceEl) priceEl.textContent = `\u20B9 ${payload.price}`;
+    if (imgEl && payload.image) imgEl.src = routeWithBase(payload.image);
+
+    // Update Back Button
+    const backBtn = document.getElementById("schedule-back-btn");
+    if (backBtn) {
+        backBtn.href = buildPropertyDetailHref(payload);
+    }
+}
+
+function renderPropertiesPage() {
+    const grids = {
+        "villa-grid": VILLA_CARDS,
+        "penthouse-grid": PENTHOUSE_CARDS,
+        "apartment-grid": APARTMENT_CARDS,
+        "house-grid": HOUSE_CARDS
+    };
+
+    Object.entries(grids).forEach(([id, cards]) => {
+        const container = document.getElementById(id);
+        if (container) {
+            container.innerHTML = cards.map(card => detailPropertyCardTemplate(card, "grid")).join("");
+        }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     loadComponent("navbar", "components/navbar.html", initNavbar);
     loadComponent("footer", "components/footer.html");
     renderHomePropertySections();
+    renderPropertiesPage();
     initPropertySliders();
     initPropertyDetailPage();
+    initSchedulePage();
     initHeroSlider();
 });
