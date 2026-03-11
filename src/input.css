@@ -53,3 +53,8 @@
 .hero-img-fade {
     transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.rank-number-border {
+    -webkit-text-stroke: 4px white;
+    paint-order: stroke fill;
+}

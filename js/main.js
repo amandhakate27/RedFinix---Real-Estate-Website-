@@ -399,10 +399,10 @@ function topPropertyCardTemplate(card, index) {
 
     return `
         <article data-slider-item class="group relative min-w-0 shrink-0 basis-[62%] pl-9 transition-transform duration-300 hover:-translate-y-1 sm:basis-[40%] sm:pl-10 md:basis-[30%] lg:basis-[calc((100%-5rem)/4)] lg:pl-12 xl:basis-[calc((100%-5rem)/4)]">
-            <span class="pointer-events-none absolute left-0 top-1/2 z-20 -translate-y-1/2 text-[6rem] leading-none font-black text-zinc-900/90 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)] sm:text-[6.4rem] lg:text-[7.2rem]">${rank}</span>
+            <span class="rank-number-border pointer-events-none absolute left-0 top-1/2 z-20 -translate-y-1/2 text-[6rem] leading-none font-black text-zinc-900/90 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)] sm:text-[6.4rem] lg:text-[7.2rem]">${rank}</span>
             <div class="relative z-10 block h-72 w-full overflow-hidden rounded-2xl ring-1 ring-zinc-200 shadow-sm transition-shadow duration-300 group-hover:shadow-xl">
                 <img src="${imageSrc}" alt="Top property ${rank}" class="absolute inset-0 h-full w-full object-cover" />
-                <a href="${detailHref}" class="absolute inset-x-3 bottom-3 inline-flex h-10 items-center justify-center rounded-full bg-red-600 px-4 text-sm font-semibold text-white whitespace-nowrap text-center transition hover:bg-red-700 sm:h-11 sm:text-base">
+                <a href="${detailHref}" class="absolute left-1/2 bottom-3 -translate-x-1/2 inline-flex h-9 items-center justify-center rounded-full bg-red-600 px-4 text-[13px] font-bold text-white whitespace-nowrap text-center transition hover:bg-red-700">
                     View Details
                 </a>
             </div>
@@ -413,13 +413,22 @@ function topPropertyCardTemplate(card, index) {
 function topLuxuryCardTemplate(card, index) {
     const imageSrc = routeWithBase(card.image);
     const rank = index + 1;
+    const detailHref = buildPropertyDetailHref(card, {
+        title: `Luxury Estate ${rank}`,
+        location: "Exclusive Location",
+        beds: "5 Beds",
+        baths: "6 Baths",
+        area: "5,800 sqft"
+    });
 
     return `
         <article data-slider-item class="group relative min-w-0 shrink-0 basis-[62%] pl-9 transition-transform duration-300 hover:-translate-y-1 sm:basis-[40%] sm:pl-10 md:basis-[30%] lg:basis-[calc((100%-5rem)/4)] lg:pl-12 xl:basis-[calc((100%-5rem)/4)]">
-            <div class="relative block h-72 w-full overflow-hidden rounded-2xl ring-1 ring-zinc-200 shadow-sm transition-shadow duration-300 group-hover:shadow-xl">
-                <img src="${imageSrc}" alt="Top luxury estate ${rank}" class="h-full w-full object-cover" />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                <span class="absolute bottom-2 left-2 text-[5.6rem] leading-none font-black text-white/95 drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)] sm:text-[6rem] lg:text-[6.4rem]">${rank}</span>
+            <span class="rank-number-border pointer-events-none absolute left-0 top-1/2 z-20 -translate-y-1/2 text-[6rem] leading-none font-black text-zinc-900/90 drop-shadow-[0_2px_4px_rgba(255,255,255,0.8)] sm:text-[6.4rem] lg:text-[7.2rem]">${rank}</span>
+            <div class="relative z-10 block h-72 w-full overflow-hidden rounded-2xl ring-1 ring-zinc-200 shadow-sm transition-shadow duration-300 group-hover:shadow-xl">
+                <img src="${imageSrc}" alt="Top luxury estate ${rank}" class="absolute inset-0 h-full w-full object-cover" />
+                <a href="${detailHref}" class="absolute left-1/2 bottom-3 -translate-x-1/2 inline-flex h-9 items-center justify-center rounded-full bg-red-600 px-4 text-[13px] font-bold text-white whitespace-nowrap text-center transition hover:bg-red-700">
+                    View Details
+                </a>
             </div>
         </article>
     `;
