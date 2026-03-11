@@ -839,6 +839,152 @@ function initNavbar(scope) {
     initMobileNav(scope);
 }
 
+function initPropertyDetailSlider(mainImage) {
+    const sliderContainer = document.getElementById("detail-slider");
+    if (!sliderContainer) return;
+
+    const img1 = document.getElementById("detail-img-1");
+    const img2 = document.getElementById("detail-img-2");
+    
+    // Set initial image from payload
+    if (img1 && mainImage) {
+        img1.src = routeWithBase(mainImage);
+    }
+
+    const sliderImages = [
+        mainImage,
+        "assets/images/property-detail one.jpg",
+        "assets/images/property-detail two.jpg",
+        "assets/images/property-detail three.jpg",
+        "assets/images/property-detail four.jpg"
+    ];
+
+    let currentIndex = 0;
+    let slideInterval;
+    let activeImg = img1;
+    let inactiveImg = img2;
+
+    const updateSlide = (index) => {
+        if (index === currentIndex) return;
+
+        const nextImage = sliderImages[index];
+        inactiveImg.src = routeWithBase(nextImage);
+        
+        // crossfade
+        activeImg.classList.add("opacity-0");
+        inactiveImg.classList.remove("opacity-0");
+
+        // swap active/inactive pointers
+        [activeImg, inactiveImg] = [inactiveImg, activeImg];
+
+        // update progress bars
+        const bars = document.querySelectorAll("[data-detail-bar]");
+        bars.forEach((bar, i) => {
+            if (i === index) {
+                bar.classList.add("bg-white");
+                bar.classList.remove("bg-white/40");
+            } else {
+                bar.classList.remove("bg-white");
+                bar.classList.add("bg-white/40");
+            }
+        });
+
+        currentIndex = index;
+    };
+
+    // Populate Progress Bars
+    const progressContainer = document.getElementById("detail-progress-bars");
+    if (progressContainer) {
+        progressContainer.innerHTML = sliderImages.map((_, i) => `
+            <div data-detail-bar="${i}" class="h-1 flex-1 rounded-full transition-all duration-300 ${i === currentIndex ? 'bg-white' : 'bg-white/40'}"></div>
+        `).join("");
+    }
+
+    const nextSlide = () => {
+        let nextIndex = (currentIndex + 1) % sliderImages.length;
+        updateSlide(nextIndex);
+    };
+
+    const startInterval = () => {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+    };
+
+    // LIGHTBOX LOGIC
+    const lightbox = document.getElementById("detail-lightbox");
+    const lightboxImg = document.getElementById("lightbox-img");
+    const lightboxClose = document.getElementById("lightbox-close");
+    const lightboxThumbsContainer = document.getElementById("lightbox-thumbs");
+
+    // Populate Lightbox Thumbs
+    if (lightboxThumbsContainer) {
+        lightboxThumbsContainer.innerHTML = sliderImages.map((img, i) => `
+            <button data-lightbox-slide="${i}" class="h-12 w-16 overflow-hidden rounded-lg border-2 ${i === currentIndex ? 'border-white' : 'border-transparent'} ring-1 ring-white/10 transition-all hover:scale-105 sm:h-14 sm:w-20">
+                <img src="${routeWithBase(img)}" alt="" class="h-full w-full object-cover" />
+            </button>
+        `).join("");
+    }
+
+    const lbThumbs = lightboxThumbsContainer ? lightboxThumbsContainer.querySelectorAll("[data-lightbox-slide]") : [];
+
+    const updateLightboxView = (index) => {
+        if (!lightboxImg) return;
+        lightboxImg.src = routeWithBase(sliderImages[index]);
+        
+        // Update Lightbox Thumbs Active State
+        lbThumbs.forEach((thumb, i) => {
+            if (i === index) {
+                thumb.classList.add("border-white", "scale-105");
+                thumb.classList.remove("border-transparent");
+            } else {
+                thumb.classList.remove("border-white", "scale-105");
+                thumb.classList.add("border-transparent");
+            }
+        });
+    };
+
+    const openLightbox = () => {
+        if (!lightbox || !lightboxImg) return;
+        updateLightboxView(currentIndex); // Sync with slider's current image
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+        document.body.style.overflow = "hidden"; // Prevent scrolling
+    };
+
+    const closeLightbox = () => {
+        if (!lightbox) return;
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+        document.body.style.overflow = ""; // Restore scrolling
+    };
+
+    sliderContainer.addEventListener("click", (e) => {
+        if (!e.target.closest("[data-detail-slide]")) {
+            openLightbox();
+        }
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+    
+    // Lightbox Thumbs Click
+    lbThumbs.forEach((thumb, i) => {
+        thumb.addEventListener("click", (e) => {
+            e.stopPropagation(); // Don't close lightbox
+            updateLightboxView(i);
+            updateSlide(i); // Sync back to main slider
+            startInterval(); // Reset timer
+        });
+    });
+
+    if (lightbox) {
+        lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox || e.target.id === "detail-lightbox") closeLightbox();
+        });
+    }
+
+    startInterval();
+}
+
 function initPropertyDetailPage() {
     const detailRoot = document.querySelector("[data-property-detail]");
     if (!detailRoot) {
@@ -883,12 +1029,6 @@ function initPropertyDetailPage() {
         priceElement.textContent = `\u20B9 ${payload.price}`;
     }
 
-    const imageElement = document.getElementById("detail-image");
-    if (imageElement) {
-        imageElement.setAttribute("src", routeWithBase(payload.image));
-        imageElement.setAttribute("alt", payload.title);
-    }
-
     const descriptionElement = document.getElementById("detail-description");
     if (descriptionElement && payload.description) {
         descriptionElement.textContent = payload.description;
@@ -898,6 +1038,8 @@ function initPropertyDetailPage() {
     if (backLink) {
         backLink.setAttribute("href", routeWithBase(ROUTES.properties));
     }
+
+    initPropertyDetailSlider(payload.image);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
