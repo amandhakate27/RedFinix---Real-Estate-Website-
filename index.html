@@ -13,10 +13,16 @@
     <div id="navbar"></div>
 
     <main>
-        <section class="relative min-h-[calc(100vh-72px)] overflow-hidden md:min-h-[calc(100vh-80px)]"
+        <section id="hero-slider" class="relative min-h-[calc(100vh-72px)] overflow-hidden md:min-h-[calc(100vh-80px)]"
             aria-label="Featured property">
-            <img src="./assets/images/hero-villa.png" alt="Modern luxury villa"
-                class="absolute inset-0 h-full w-full object-cover object-center opacity-85" />
+            <!-- Slider Images -->
+            <div id="hero-images" class="absolute inset-0">
+                <img id="hero-img-1" src="./assets/images/hero-villa.png" alt="Modern luxury villa"
+                    class="hero-img-fade absolute inset-0 h-full w-full object-cover object-center opacity-85" />
+                <img id="hero-img-2" src="" alt=""
+                    class="hero-img-fade absolute inset-0 h-full w-full object-cover object-center opacity-0" />
+            </div>
+
             <div
                 class="absolute inset-0 bg-[linear-gradient(105deg,rgba(0,0,0,0.72)_15%,rgba(0,0,0,0.44)_40%,rgba(0,0,0,0.18)_66%)]">
             </div>
@@ -24,20 +30,20 @@
             <div
                 class="relative z-10 flex min-h-[calc(100vh-72px)] items-center justify-center px-6 sm:px-10 lg:px-16 md:min-h-[calc(100vh-80px)]">
                 <div class="w-full max-w-5xl text-center text-white">
-                    <h1 class="mb-4 text-5xl leading-[0.96] font-black sm:text-6xl lg:text-7xl xl:text-8xl">Modern
+                    <h1 id="hero-title" class="hero-content-item active mb-4 text-5xl leading-[0.96] font-black sm:text-6xl lg:text-7xl xl:text-8xl">Modern
                         Luxury Villa</h1>
-                    <p class="mx-auto mb-7 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg lg:text-xl">
+                    <p id="hero-description" class="hero-content-item active delay-100 mx-auto mb-7 max-w-3xl text-base leading-relaxed text-white/90 sm:text-lg lg:text-xl">
                         Experience unparalleled luxury in this stunning 5-bedroom contemporary
                         masterpiece. Featuring panoramic views, infinity pool, and state-of-the-art
                         smart home technology.
                     </p>
-                    <div class="mb-8 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-3">
-                        <span class="whitespace-nowrap text-xl font-bold sm:text-3xl lg:text-4xl text-white">&#8377;
+                    <div id="hero-meta" class="hero-content-item active delay-200 mb-8 flex flex-col items-center justify-center gap-2 sm:flex-row sm:gap-3">
+                        <span id="hero-price" class="whitespace-nowrap text-xl font-bold sm:text-3xl lg:text-4xl text-white">&#8377;
                             4,500,000</span>
                         <span class="hidden text-2xl font-semibold text-white sm:inline">|</span>
-                        <span class="text-xl font-semibold sm:text-3xl lg:text-4xl text-white">Beverly Hills, CA</span>
+                        <span id="hero-location" class="text-xl font-semibold sm:text-3xl lg:text-4xl text-white">Beverly Hills, CA</span>
                     </div>
-                    <div class="flex flex-wrap items-center justify-center gap-4">
+                    <div class="hero-content-item active delay-300 flex flex-wrap items-center justify-center gap-4">
                         <a class="inline-flex h-11 min-w-[168px] items-center justify-center rounded-full bg-red-600 px-7 text-base font-semibold text-white transition hover:bg-red-700 sm:h-12 sm:min-w-[186px]"
                             href="./pages/schedule.html">
                             Schedule
@@ -50,10 +56,11 @@
                 </div>
             </div>
 
-            <div class="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-3" aria-hidden="true">
-                <span class="h-2 w-12 rounded-full bg-white"></span>
-                <span class="h-2 w-12 rounded-full bg-white/40"></span>
-                <span class="h-2 w-12 rounded-full bg-white/40"></span>
+            <div id="hero-dots" class="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 gap-3" aria-hidden="true">
+                <button data-slide="0" class="h-2 w-12 rounded-full bg-white transition-all duration-300"></button>
+                <button data-slide="1" class="h-2 w-12 rounded-full bg-white/40 transition-all duration-300 hover:bg-white/60"></button>
+                <button data-slide="2" class="h-2 w-12 rounded-full bg-white/40 transition-all duration-300 hover:bg-white/60"></button>
+                <button data-slide="3" class="h-2 w-12 rounded-full bg-white/40 transition-all duration-300 hover:bg-white/60"></button>
             </div>
         </section>
 

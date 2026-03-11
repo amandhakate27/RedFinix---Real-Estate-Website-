@@ -122,6 +122,122 @@ const NEWSLETTER_SECTION = {
     note: "Join 50,000+ subscribers. Unsubscribe anytime."
 };
 
+const HERO_SLIDES = [
+    {
+        title: "Modern Luxury Villa",
+        description: "Experience unparalleled luxury in this stunning 5-bedroom contemporary masterpiece. Featuring panoramic views, infinity pool, and state-of-the-art smart home technology.",
+        price: "4,500,000",
+        location: "Beverly Hills, CA",
+        image: "assets/images/hero-villa.png"
+    },
+    {
+        title: "Pinnacle Heights Estate",
+        description: "Perched atop the city's highest point, this architectural marvel offers 360-degree views, a private vineyard, and a world-class spa facility.",
+        price: "8,900,000",
+        location: "Kalyani Nagar, Pune",
+        image: "assets/images/Modern Luxury villa one.avif"
+    },
+    {
+        title: "Azure Shoreline Mansion",
+        description: "A breathtaking coastal sanctuary featuring private beach access, custom-built yacht dock, and floor-to-ceiling windows capturing every sunset.",
+        price: "12,750,000",
+        location: "Alibaug, Maharashtra",
+        image: "assets/images/Modern Luxury villa two.avif"
+    },
+    {
+        title: "Elysian Garden Manor",
+        description: "A seamless blend of classical elegance and modern comfort, set amidst 5 acres of landscaped English gardens with a private lake and guest house.",
+        price: "6,200,000",
+        location: "Lonavala, Maharashtra",
+        image: "assets/images/Modern Luxury villa three.avif"
+    }
+];
+
+function initHeroSlider() {
+    const heroSection = document.getElementById("hero-slider");
+    if (!heroSection) return;
+
+    const img1 = document.getElementById("hero-img-1");
+    const img2 = document.getElementById("hero-img-2");
+    const titleElement = document.getElementById("hero-title");
+    const descElement = document.getElementById("hero-description");
+    const priceElement = document.getElementById("hero-price");
+    const locationElement = document.getElementById("hero-location");
+    const contentItems = document.querySelectorAll(".hero-content-item");
+    const dotsContainer = document.getElementById("hero-dots");
+    const dots = dotsContainer ? dotsContainer.querySelectorAll("[data-slide]") : [];
+
+    let currentIndex = 0;
+    let slideInterval;
+    let activeImg = img1;
+    let inactiveImg = img2;
+
+    const updateSlide = (index) => {
+        const slide = HERO_SLIDES[index];
+        if (!slide) return;
+
+        // 1. Fade out current content
+        contentItems.forEach(item => item.classList.remove("active"));
+
+        // 2. Prepare next image
+        inactiveImg.src = routeWithBase(slide.image);
+        inactiveImg.alt = slide.title;
+        inactiveImg.classList.remove("animate-hero-zoom");
+
+        // 3. Start crossfade and entry after content is halfway faded out
+        setTimeout(() => {
+            // Crossfade images
+            activeImg.style.opacity = "0";
+            inactiveImg.style.opacity = "0.85";
+            inactiveImg.classList.add("animate-hero-zoom");
+
+            // Swap active/inactive pointers
+            [activeImg, inactiveImg] = [inactiveImg, activeImg];
+
+            // Update text content
+            if (titleElement) titleElement.textContent = slide.title;
+            if (descElement) descElement.textContent = slide.description;
+            if (priceElement) priceElement.innerHTML = `&#8377; ${slide.price}`;
+            if (locationElement) locationElement.textContent = slide.location;
+
+            // Trigger staggered entry
+            contentItems.forEach(item => item.classList.add("active"));
+        }, 600);
+
+        // Update Dots
+        dots.forEach((dot, i) => {
+            dot.classList.toggle("bg-white", i === index);
+            dot.classList.toggle("bg-white/40", i !== index);
+        });
+
+        currentIndex = index;
+    };
+
+    const nextSlide = () => {
+        let nextIndex = (currentIndex + 1) % HERO_SLIDES.length;
+        updateSlide(nextIndex);
+    };
+
+    const startInterval = () => {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 7000); // Slightly longer for smooth feel
+    };
+
+    // Initial zoom for first slide
+    if (img1) img1.classList.add("animate-hero-zoom");
+
+    // Dot click listeners
+    dots.forEach((dot, i) => {
+        dot.addEventListener("click", () => {
+            if (i === currentIndex) return;
+            updateSlide(i);
+            startInterval();
+        });
+    });
+
+    startInterval();
+}
+
 const PROPERTY_SECTIONS = [
     { title: "Featured Properties", type: "detail-overlay", cards: FEATURED_CARDS },
     { title: "Luxury Estates", type: "detail-overlay", cards: LUXURY_CARDS },
@@ -781,4 +897,5 @@ document.addEventListener("DOMContentLoaded", () => {
     renderHomePropertySections();
     initPropertySliders();
     initPropertyDetailPage();
+    initHeroSlider();
 });
