@@ -123,9 +123,9 @@ const NEWSLETTER_SECTION = {
 };
 
 const PROPERTY_SECTIONS = [
-    { title: "Featured Properties", type: "detail-outside", cards: FEATURED_CARDS },
+    { title: "Featured Properties", type: "detail-overlay", cards: FEATURED_CARDS },
     { title: "Luxury Estates", type: "detail-overlay", cards: LUXURY_CARDS },
-    { title: "Trending Now", type: "detail-outside", cards: TRENDING_CARDS },
+    { title: "Trending Now", type: "detail-overlay", cards: TRENDING_CARDS },
     { title: "New Listings", type: "detail-overlay", cards: NEW_LISTINGS_CARDS },
     { title: "Top 10 Properties", type: "top-properties", cards: TOP_PROPERTIES_CARDS },
     { title: "Top 10 Luxury estates", type: "top-luxury", cards: TOP_LUXURY_ESTATE_CARDS },
